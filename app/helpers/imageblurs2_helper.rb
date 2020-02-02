@@ -1,0 +1,2 @@
+module Imageblurs2Helper
+end
