@@ -1,2 +1,2 @@
-class Imageblurs2Controller < ApplicationController
+class Imageblurs2Controller < ApplicationController 
 end

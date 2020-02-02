@@ -1,0 +1,2 @@
+module Imageblurs3Helper
+end

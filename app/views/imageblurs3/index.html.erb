@@ -1,0 +1,66 @@
+class Image
+
+    def initialize(image)
+        @image = image
+    end
+
+    def find_ones 
+        grid = []
+        @image.each_with_index do |x, index|
+            x.each_with_index do |y, ind|
+                if y == 1
+                    grid.push([index, ind])
+                end
+            end
+        end
+        
+            
+           
+        grid.each do |coord|
+            row_index = coord[0]
+            col_index = coord[1]
+            
+            if col_index > 0
+                @image[row_index][col_index - 1] = 1
+            end
+            
+            if row_index > 0
+                @image[row_index - 1][col_index] = 1  
+            end
+
+            if col_index < @image[coord[0]].length - 1
+                @image[row_index][col_index +1] = 1  
+            end
+
+            if row_index < @image.length - 1
+                @image[row_index + 1][col_index] = 1
+            end
+        end
+    end
+
+    def blur (distance)
+        distance.times do
+            find_ones
+        end
+    end
+
+    def output_image
+        @image.each do |pixel|
+                puts pixel.join(",")
+        end
+    end
+
+end
+ 
+image = Image.new([        
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0]
+    ])
+    
+image.blur(2)
+image.output_image
+    
